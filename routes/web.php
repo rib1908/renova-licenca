@@ -4,7 +4,7 @@ use App\Http\Controllers\RegistroController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('vitrine.vitrine');
 });
 
 Route::prefix('registros')->group(function() {
