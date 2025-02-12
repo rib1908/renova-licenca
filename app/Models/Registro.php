@@ -14,4 +14,17 @@ class Registro extends Model
             'ip',
             'data_registro',
     ];
+
+
+    public function getRegistrosPesquisarIndex(string $search = '') {
+        $registro = $this->where(function ($query) use ($search){
+            if ($search) {
+                $query->where('nome', $search);
+                $query->orWhere('nome', 'LIKE', "%{$search}%");
+            }
+        })->get();
+
+        return $registro;
+    }
+
 }
