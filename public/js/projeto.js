@@ -30,3 +30,15 @@ function deleteRegistroPaginacao(rotaUrl, idDoRegistro) {
         });
     }
 }
+//inputIp e InputData
+$('#InputIp').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
+    translation: {
+      'Z': {
+        pattern: /[0-9]/, optional: true
+      }
+    }
+  });
+
+$('#InputData').mask('00/00/0000');
+
+

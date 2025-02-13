@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormRequestRegistro;
 use App\Models\Registro;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,7 @@ class RegistroController extends Controller
     {
         $this->registro = $registro;
     }
+
     public function index(Request $request)
     {
         $pesquisar = $request->pesquisar;
@@ -19,10 +21,25 @@ class RegistroController extends Controller
         return view('pages.registros.paginacao', compact('findRegistro'));
     }
 
-    public function delete (Request $request) {
+    public function delete (Request $request)
+    {
             $id =$request->id;
             $buscaRegistro = Registro::find($id);
             $buscaRegistro->delete();
             return response()->json(['success' => true]);
+    }
+
+
+    public function cadastrarRegistro(FormRequestRegistro $request)
+    {
+        if ($request->method() == 'POST') {
+            //cria dados
+            $data = $request->all();
+            Registro::create($data);
+
+            return redirect()->route('registro.index');
+        }
+
+        return view('pages.registros.create');
     }
 }

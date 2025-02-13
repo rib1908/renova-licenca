@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('registros', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('dns');
-            $table->string('ip');
-            $table->date('data_registro');
+            $table->string('nome')->default('');
+            $table->string('dns')->default('');
+            $table->string('ip')->default('');
+            $table->date('data_registro')->default('2025-01-01');
             $table->timestamps();
         });
     }

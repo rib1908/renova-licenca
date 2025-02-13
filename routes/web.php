@@ -9,6 +9,10 @@ Route::get('/', function () {
 
 Route::prefix('registros')->group(function() {
     Route::get('/', [RegistroController::class, 'index'])->name('registro.index');
+    Route::get('/cadastrarRegistro', [RegistroController::class, 'cadastrarRegistro'])->name('cadastrar.registro');
+    Route::post('/cadastrarRegistro', [RegistroController::class, 'cadastrarRegistro'])->name('cadastrar.registro');
+
+
     Route::delete('/delete', [RegistroController::class, 'delete'])->name('registro.delete');
 
 });

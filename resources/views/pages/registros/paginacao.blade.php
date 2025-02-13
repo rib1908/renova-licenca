@@ -23,7 +23,7 @@
     <h1 class="h2">Registros</h1>
 </div>
 <form action="{{ route('registro.index') }}" method="get">
-    <a id="botao-confirma" type="button" href="" class="btn btn-success float-end">
+    <a id="botao-confirma" type="button" href=" {{ route('cadastrar.registro') }} " class="btn btn-success float-end">
         Incluir Registro
     </a>
 </form>
