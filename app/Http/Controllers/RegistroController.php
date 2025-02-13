@@ -18,4 +18,11 @@ class RegistroController extends Controller
 
         return view('pages.registros.paginacao', compact('findRegistro'));
     }
+
+    public function delete (Request $request) {
+            $id =$request->id;
+            $buscaRegistro = Registro::find($id);
+            $buscaRegistro->delete();
+            return response()->json(['success' => true]);
+    }
 }

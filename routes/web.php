@@ -9,5 +9,6 @@ Route::get('/', function () {
 
 Route::prefix('registros')->group(function() {
     Route::get('/', [RegistroController::class, 'index'])->name('registro.index');
+    Route::delete('/delete', [RegistroController::class, 'delete'])->name('registro.delete');
 
 });
