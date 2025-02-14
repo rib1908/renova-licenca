@@ -39,7 +39,23 @@ class RegistroController extends Controller
 
             return redirect()->route('registro.index');
         }
-
+        //mostrar os dados
         return view('pages.registros.create');
+    }
+
+    public function atualizarRegistro(FormRequestRegistro $request, $id)
+    {
+        if ($request->method() == 'PUT') {
+            //atualiza dados
+            $data = $request->all();
+
+            $buscaRegistro = Registro::find($id);
+            $buscaRegistro->update($data);
+
+            return redirect()->route('registro.index');
+        }
+        $findRegistro = Registro::where('id', '=', $id)->first();
+        //mostrar os dados
+        return view('pages.registros.atualiza', compact('findRegistro'));
     }
 }

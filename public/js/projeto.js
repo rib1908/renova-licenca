@@ -30,7 +30,8 @@ function deleteRegistroPaginacao(rotaUrl, idDoRegistro) {
         });
     }
 }
-//inputIp e InputData
+
+//Mascaras para IP e Data
 $('#InputIp').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
     translation: {
       'Z': {
@@ -39,6 +40,6 @@ $('#InputIp').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
     }
   });
 
-$('#InputData').mask('00/00/0000');
+//$('#InputData').mask('00/00/0000');
 
 
