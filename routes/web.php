@@ -9,8 +9,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('vitrine')->group(function() {
-    Route::get('/', [VitrineController::class, 'index'])->name('registro.index');
-
+    Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index');
 
 });
 

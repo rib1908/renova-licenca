@@ -2,13 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Registro;
 use Illuminate\Http\Request;
 
 class VitrineController extends Controller
 {
-    public function index()
+
+    public function __construct(Registro $registro)
     {
-        return view('pages.vitrine.vitrine');
+        $this->registro = $registro;
     }
+
+    public function index(Request $request)
+    {
+        /*$pesquisar = $request->pesquisar;
+        $findRegistro = $this->registro->getRegistrosPesquisarIndex(search: $pesquisar ?? '');
+        */
+        $findRegistro = Registro::all();
+        return view('pages.vitrine.vitrine', compact('findRegistro'));
+
+    }
+
 
 }
