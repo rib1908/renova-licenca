@@ -16,12 +16,14 @@
 #titulo-card {
     color: black; /* Cor do título em branco */
     font-size: 1.4rem; /* Tamanho do título */
+    text-align: center;
     margin-bottom: 10px; /* Espaçamento abaixo do título */
 }
 
 .card-text {
     color: black; /* Cor do texto em branco */
     font-size: 1.2rem; /* Tamanho do texto */
+    text-align: center;
     margin-bottom: 8px; /* Espaçamento entre os textos */
 }
 
@@ -36,9 +38,9 @@
     <h1 class="h2">Vitrine</h1>
 </div>
 
-    <div class="row" >
+    <div class="row g-3" >
         @foreach ($findRegistro as $registro)
-        <div id>
+        <div class="col-md-2">
          <div class="card" id="card-nome">
             <div class="card-body" >
              <h5 class="card-title" id="titulo-card"> {{$registro->nome}} </h5>

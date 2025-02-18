@@ -42,7 +42,7 @@
     </div>
     <div class="mb-3">
        <label for="InputData" class="form-label">Data Registro</label>
-       <input type="date" value="{{ isset($findRegistro->data_Registro) ? $findRegistro->data_registro : old('data_registro') }}" class="form-control @error('data_registro') is-invalid @enderror" id="InputData" name='data_registro'>
+       <input type="date" value="{{ isset($findRegistro->data_registro) ? $findRegistro->data_registro : old('data_registro') }}" class="form-control @error('data_registro') is-invalid @enderror" id="InputData" name='data_registro'>
        @if ($errors->has('data_registro'))
         <div class="invalid-feedback"> {{ $errors->first('data_registro') }}</div>
        @endif
