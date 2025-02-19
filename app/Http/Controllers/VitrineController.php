@@ -19,7 +19,7 @@ class VitrineController extends Controller
         /*$pesquisar = $request->pesquisar;
         $findRegistro = $this->registro->getRegistrosPesquisarIndex(search: $pesquisar ?? '');
         */
-        $findRegistro = Registro::all();
+        $findRegistro = Registro::orderBy('data_registro')->get();
         return view('pages.vitrine.vitrine', compact('findRegistro'));
 
     }
@@ -31,7 +31,8 @@ class VitrineController extends Controller
         $dataRegistro = Carbon::parse($dataRegistro-> data_registro);
         $dataRegistro->addDays(90);
         $dataRegistro->save();
-        return view('pages.vitrine.vitrine', compact('$dataRegistro'));
+
+        return view('pages.vitrine.vitrine', compact('dataRegistro'));
     }
 
 }

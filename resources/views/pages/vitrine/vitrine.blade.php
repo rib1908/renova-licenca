@@ -40,10 +40,10 @@
 <div class="row g-3" >
     @foreach ($findRegistro as $registro)
         @php
-
         $dataRegistro = \Carbon\Carbon::parse($registro->data_registro);
         $hoje = \Carbon\Carbon::now();
         $diferencaDias = $hoje->diffInDays($dataRegistro, false); // false para considerar datas futuras como negativas
+
         @endphp
 
         <div class="col-md-2" id="status_card">
