@@ -10,6 +10,7 @@ Route::get('/', function () {
 
 Route::prefix('vitrine')->group(function() {
     Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index');
+    Route::get('/adicionarDias/{id}', [VitrineController::class, 'adicionarDias'])->name('vitrine.adicionar');
 
 });
 

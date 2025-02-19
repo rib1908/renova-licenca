@@ -6,7 +6,6 @@
     max-width: 300px; /* Largura máxima do card */
     margin: 1px ; /* Centraliza os cards com uma margem */
     padding: 1px; /* Padding interno */
-    background-color: rgb(235, 29, 14) !important; /* Cor verde com a propriedade !important */
     border-radius: 12px; /* Bordas arredondadas */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
 
@@ -38,20 +37,42 @@
     <h1 class="h2">Vitrine</h1>
 </div>
 
-    <div class="row g-3" >
-        @foreach ($findRegistro as $registro)
-        <div class="col-md-2">
-         <div class="card" id="card-nome">
-            <div class="card-body" >
-             <h5 class="card-title" id="titulo-card"> {{$registro->nome}} </h5>
-            <p class="card-text"> {{$registro->dns}} </p>
-            <p class="card-text"> {{$registro->ip}} </p>
-            <p class="card-text"> {{$registro->data_registro}} </p>
+<div class="row g-3" >
+    @foreach ($findRegistro as $registro)
+        @php
 
-            </div>
-         </div>
+        $dataRegistro = \Carbon\Carbon::parse($registro->data_registro);
+        $hoje = \Carbon\Carbon::now();
+        $diferencaDias = $hoje->diffInDays($dataRegistro, false); // false para considerar datas futuras como negativas
+        @endphp
+
+        <div class="col-md-2" id="status_card">
+            @if ($diferencaDias >= 15)
+             <div class="card" id="card-nome" style="background: green">
+                <div class="card-body" >
+                    <h5 class="card-title" id="titulo-card"> {{$registro->nome}} </h5>
+                    <p class="card-text"> {{$registro->dns}} </p>
+                    <p class="card-text"> {{$registro->ip}} </p>
+                    <p class="card-text"> {{ $registro->data_registro }} </p>
+                    @elseif ($diferencaDias < 15 && $diferencaDias > 5)
+                    <div class="card" id="card-nome" style="background: yellow">
+                        <div class="card-body" >
+                            <h5 class="card-title" id="titulo-card"> {{$registro->nome}} </h5>
+                            <p class="card-text"> {{$registro->dns}} </p>
+                            <p class="card-text"> {{$registro->ip}} </p>
+                            <p class="card-text"> {{ $registro->data_registro }} </p>
+                    @else
+                    <div class="card" id="card-nome" style="background: red">
+                        <div class="card-body" >
+                            <h5 class="card-title" id="titulo-card"> {{$registro->nome}} </h5>
+                            <p class="card-text"> {{$registro->dns}} </p>
+                            <p class="card-text"> {{$registro->ip}} </p>
+                            <p class="card-text"> {{ $registro->data_registro }} </p>
+                    @endif
+                </div>
+             </div>
         </div>
-        @endforeach
-    </div>
+    @endforeach
+</div>
 
 
