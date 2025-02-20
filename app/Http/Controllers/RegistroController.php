@@ -64,9 +64,9 @@ class RegistroController extends Controller
 
         if ($dataRegistro) {
             // Converter a data_registro para um objeto Carbon e adicionar 90 dias a partir da data atual
-            $novaData = Carbon::now();
-            $novaData = Carbon::parse($dataRegistro->data_registro)->addDays(90);
+            $novaData = Carbon::now()->addDays(90);
 
+            //$novaData = Carbon::parse($dataRegistro->data_registro);
             // Atualizar o campo no modelo
             $dataRegistro->data_registro = $novaData;
             $dataRegistro->save(); // Salvar no banco de dados
