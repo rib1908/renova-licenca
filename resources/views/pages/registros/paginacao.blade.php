@@ -1,21 +1,22 @@
 @extends('index')
 
 <style>
-.h2 {
-    margin-top: 50px;
-    margin-left: 40px;
-}
+    .h2 {
+        margin-top: 50px;
+        margin-left: 40px;
+    }
 
-#botao-confirma {
-    margin-right: 350px;
-}
+    #botao-confirma {
+        margin-right: 350px;
+    }
 
-.table {
-  max-width: 1000px; /* Define uma largura máxima para o formulário */
-  padding: 200px;
-  margin-top: 20px;
-  border-radius: 100px;
-}
+    .table {
+        max-width: 1000px;
+        /* Define uma largura máxima para o formulário */
+        padding: 200px;
+        margin-top: 20px;
+        border-radius: 100px;
+    }
 </style>
 
 
@@ -31,33 +32,42 @@
 <div class="table-responsive mt-4">
     <table class="table table-striped table-sm">
         <thead>
-        <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>DNS</th>
-            <th>IP</th>
-            <th>Data Registro</th>
-            <th>Ações</th>
-        </tr>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>DNS</th>
+                <th>IP</th>
+                <th>Data Registro</th>
+                <th>Ações</th>
+            </tr>
         </thead>
         <tbody>
             @foreach ($findRegistro as $registro)
-            <tr>
-                <th scope="row"> {{$registro->id}} </th>
-                <td> {{$registro->nome}} </td>
-                <td> {{$registro->dns}} </td>
-                <td> {{$registro->ip}} </td>
-                <td> {{$registro->data_registro}} </td>
-                <td>
-                    <a href="{{ route('atualizar.registro', $registro->id) }}" class="btn btn-light btn-sm">
-                      Editar
-                    </a>
-                    <meta name='csrf-token' content=" {{ csrf_token() }}" />
-                    <a onclick="deleteRegistroPaginacao(' {{ route('registro.delete') }} ', {{ $registro->id }})" class="btn btn-danger btn-sm">
-                        Excluir
-                      </a>
-                </td>
-            </tr>
+                <tr>
+                    <th scope="row"> {{ $registro->id }} </th>
+                    <td> {{ $registro->nome }} </td>
+                    <td> {{ $registro->dns }} </td>
+                    <td> {{ $registro->ip }} </td>
+                    <td> {{ $registro->data_registro }} </td>
+                    <td>
+                        <a href="{{ route('atualizar.registro', $registro->id) }}" class="btn btn-light btn-sm">
+                            Editar
+                        </a>
+                        <meta name='csrf-token' content=" {{ csrf_token() }}" />
+                        <a onclick="deleteRegistroPaginacao(' {{ route('registro.delete') }} ', {{ $registro->id }})"
+                            class="btn btn-danger btn-sm">
+                            Excluir
+                        </a>
+
+                        <form action="{{ route('renovar.registro', $registro->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                Renovar Data
+                            </button>
+                        </form>
+                    </td>
+                </tr>
             @endforeach
 
         </tbody>

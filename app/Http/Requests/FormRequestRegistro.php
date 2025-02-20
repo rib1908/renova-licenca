@@ -15,13 +15,13 @@ class FormRequestRegistro extends FormRequest
 
     public function rules(): array
     {
-        $request=[];
+        $request = [];
         if ($this->method() == "POST" || $this->method() == "PUT") {
             $request = [
-                'nome'=> 'required',
-                'dns'=> 'required',
-                'ip'=> 'required',
-                'data_registro'=> 'required'
+                'nome' => 'required',
+                'dns' => 'required',
+                'ip' => 'required',
+                'data_registro' => 'required'
             ];
         }
         return $request;

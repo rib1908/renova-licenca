@@ -15,10 +15,10 @@ class RegistroSeeder extends Seeder
     {
         Registro::create(
             [
-            'nome'=> 'trafic',
-            'dns'=> 'trafic.mesquita.rj.gov.br',
-            'ip'=> '192.168.76.100',
-            'data_registro'=> '2024-10-10',
+                'nome' => 'trafic',
+                'dns' => 'trafic.mesquita.rj.gov.br',
+                'ip' => '192.168.76.100',
+                'data_registro' => '2024-10-10',
             ]
         );
     }

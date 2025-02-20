@@ -9,15 +9,16 @@ class Registro extends Model
 {
 
     protected $fillable = [
-            'nome',
-            'dns',
-            'ip',
-            'data_registro',
+        'nome',
+        'dns',
+        'ip',
+        'data_registro',
     ];
 
 
-    public function getRegistrosPesquisarIndex(string $search = '') {
-        $registro = $this->where(function ($query) use ($search){
+    public function getRegistrosPesquisarIndex(string $search = '')
+    {
+        $registro = $this->where(function ($query) use ($search) {
             if ($search) {
                 $query->where('nome', $search);
                 $query->orWhere('nome', 'LIKE', "%{$search}%");
@@ -26,5 +27,4 @@ class Registro extends Model
 
         return $registro;
     }
-
 }
