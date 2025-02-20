@@ -20,7 +20,7 @@
 </style>
 
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Registros</h1>
 </div>
 <form action="{{ route('registro.index') }}" method="get">
@@ -50,16 +50,16 @@
                     <td> {{ $registro->ip }} </td>
                     <td> {{ $registro->data_registro }} </td>
                     <td>
-                        <a href="{{ route('atualizar.registro', $registro->id) }}" class="btn btn-light btn-sm">
+                        <a href="{{ route('atualizar.registro', $registro->id) }}" class="btn btn-light btn-sm ">
                             Editar
                         </a>
                         <meta name='csrf-token' content=" {{ csrf_token() }}" />
                         <a onclick="deleteRegistroPaginacao(' {{ route('registro.delete') }} ', {{ $registro->id }})"
-                            class="btn btn-danger btn-sm">
+                            class="btn btn-danger btn-sm" >
                             Excluir
                         </a>
 
-                        <form action="{{ route('renovar.registro', $registro->id) }}" method="POST">
+                        <form action="{{ route('renovar.registro', $registro->id) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('PUT')
                             <button type="submit" class="btn btn-primary btn-sm">

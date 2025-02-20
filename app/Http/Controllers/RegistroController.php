@@ -52,8 +52,6 @@ class RegistroController extends Controller
 
             $buscaRegistro = Registro::find($id);
             $buscaRegistro->update($data);
-
-            return redirect()->route('registro.index');
         }
         $findRegistro = Registro::where('id', '=', $id)->first();
         //mostrar os dados
@@ -65,12 +63,15 @@ class RegistroController extends Controller
         $dataRegistro = Registro::find($id);
 
         if ($dataRegistro) {
-            // Converter a data_registro para um objeto Carbon e adicionar 90 dias
+            // Converter a data_registro para um objeto Carbon e adicionar 90 dias a partir da data atual
+            $novaData = Carbon::now();
             $novaData = Carbon::parse($dataRegistro->data_registro)->addDays(90);
 
             // Atualizar o campo no modelo
             $dataRegistro->data_registro = $novaData;
             $dataRegistro->save(); // Salvar no banco de dados
+
+            return redirect()->route('registro.index');
         }
         $findRegistro = Registro::all();
         return view('pages.registros.paginacao', compact('findRegistro'));
