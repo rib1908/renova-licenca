@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VitrineController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,8 @@ Route::prefix('registros')->group(function () {
 
 
     Route::delete('/delete', [RegistroController::class, 'delete'])->name('registro.delete');
+});
+
+Route::prefix('usuario')->group(function () {
+    Route::get('/', [UsuarioController::class, 'index'])->name('usuario.index');
 });
