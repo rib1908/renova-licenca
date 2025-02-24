@@ -52,6 +52,7 @@ class RegistroController extends Controller
 
             $buscaRegistro = Registro::find($id);
             $buscaRegistro->update($data);
+            return redirect()->route('registro.index');
         }
         $findRegistro = Registro::where('id', '=', $id)->first();
         //mostrar os dados
