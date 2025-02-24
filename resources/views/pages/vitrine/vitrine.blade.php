@@ -1,18 +1,22 @@
 @extends('index')
 
 <style>
-   /* Container dos cards */
-   .card-container {
+    /* Container dos cards */
+    .card-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Seis colunas em telas grandes */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        /* Seis colunas em telas grandes */
         gap: 15px;
-        justify-content: start; /* Alinha os cards à esquerda */
+        justify-content: start;
+        /* Alinha os cards à esquerda */
     }
 
     /* Estilos do Card */
     .card {
-        max-width: 250px; /* Mantém o tamanho uniforme */
-        height: 250px; /* Altura fixa para alinhamento */
+        max-width: 250px;
+        /* Mantém o tamanho uniforme */
+        height: 250px;
+        /* Altura fixa para alinhamento */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -21,16 +25,19 @@
         border-radius: 12px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 15px;
-        overflow: hidden; /* Garante que nada saia do card */
+        overflow: hidden;
+        /* Garante que nada saia do card */
     }
 
     /* Estilização do título */
     #titulo-card {
         font-size: 1.2rem;
         margin-bottom: 8px;
-        white-space: nowrap; /* Evita que o título quebre */
+        white-space: nowrap;
+        /* Evita que o título quebre */
         overflow: hidden;
-        text-overflow: ellipsis; /* Adiciona "..." se for muito longo */
+        text-overflow: ellipsis;
+        /* Adiciona "..." se for muito longo */
         width: 100%;
         color: black
     }
@@ -39,7 +46,8 @@
     .card-text {
         font-size: 1rem;
         margin-bottom: 6px;
-        word-wrap: break-word; /* Quebra o texto para caber dentro do card */
+        word-wrap: break-word;
+        /* Quebra o texto para caber dentro do card */
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
@@ -50,28 +58,31 @@
     /* Responsividade */
     @media (max-width: 1200px) {
         .card-container {
-            grid-template-columns: repeat(4, 1fr); /* 4 colunas em telas médias */
+            grid-template-columns: repeat(4, 1fr);
+            /* 4 colunas em telas médias */
         }
     }
 
     @media (max-width: 768px) {
         .card-container {
-            grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas menores */
+            grid-template-columns: repeat(2, 1fr);
+            /* 2 colunas em telas menores */
         }
     }
 
     @media (max-width: 480px) {
         .card-container {
-            grid-template-columns: repeat(1, 1fr); /* 1 coluna em telas muito pequenas */
+            grid-template-columns: repeat(1, 1fr);
+            /* 1 coluna em telas muito pequenas */
         }
     }
-
 </style>
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Vitrine</h1>
+<div class="text-bg-primary mb-5 w-100 p-5">
+    <div class="card-body">
+        <p class="card-text" style="text-align: center; color: white; font-size: 80px;">DNS</p>
+    </div>
 </div>
-
 <div class="card-container">
     @foreach ($findRegistro as $registro)
         @php
