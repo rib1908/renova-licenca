@@ -1,17 +1,26 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VitrineController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('pages.vitrine.vitrine');
 });
 
+Route::prefix('login')->group(function () {
+    Route::get('/', [LoginController::class, 'index'])->name('login.index');
+    Route::post('/', [LoginController::class, 'login'])->name('auth');
+
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout.index');
+});
+
 Route::prefix('vitrine')->group(function () {
     Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index');
-});
+})->middleware('auth')->name('vitrine');
 
 Route::prefix('registros')->group(function () {
     Route::get('/', [RegistroController::class, 'index'])->name('registro.index');
@@ -27,8 +36,4 @@ Route::prefix('registros')->group(function () {
 
 
     Route::delete('/delete', [RegistroController::class, 'delete'])->name('registro.delete');
-});
-
-Route::prefix('usuario')->group(function () {
-    Route::get('/', [UsuarioController::class, 'index'])->name('usuario.index');
 });

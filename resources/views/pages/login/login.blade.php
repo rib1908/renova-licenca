@@ -15,17 +15,21 @@
                 <p class="col-lg-10 fs-4">Mesquita</p>
             </div>
             <div class="col-md-10 mx-auto col-lg-5">
-                <form class="p-4 p-md-5 border rounded-3 bg-light">
+                <form method="POST" action="{{ route('auth')}}" class="p-4 p-md-5 border rounded-3 bg-dark">
+                    @csrf
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
                         <label for="floatingInput">Username</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
                         <label for="floatingPassword">Password</label>
                     </div>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-                    <hr class="my-4">
+
+                    @if(session('status'))
+                    <div class="alert alert-info mt-3 text-center">{{ session('status')}}</div>
+                    @endif
                 </form>
             </div>
         </div>
@@ -37,13 +41,3 @@
         </footer>
     </div>
 </main>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content rounded-3 shadow">
-
-
-        </div>
-    </div>
-</div>
