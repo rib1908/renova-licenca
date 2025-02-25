@@ -18,22 +18,26 @@ Route::prefix('login')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout.index');
 });
 
-Route::prefix('vitrine')->group(function () {
-    Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index');
-})->middleware('auth')->name('vitrine');
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('vitrine')->group(function () {
+        Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index');
+    });
 
-Route::prefix('registros')->group(function () {
-    Route::get('/', [RegistroController::class, 'index'])->name('registro.index');
-    //cadastro
-    Route::get('/cadastrarRegistro', [RegistroController::class, 'cadastrarRegistro'])->name('cadastrar.registro');
-    Route::post('/cadastrarRegistro', [RegistroController::class, 'cadastrarRegistro'])->name('cadastrar.registro');
-    //atualizar
-    Route::get('/atualizarRegistro/{id}', [RegistroController::class, 'atualizarRegistro'])->name('atualizar.registro');
-    Route::put('/atualizarRegistro/{id}', [RegistroController::class, 'atualizarRegistro'])->name('atualizar.registro');
+    Route::prefix('registros')->group(function () {
+        Route::get('/', [RegistroController::class, 'index'])->name('registro.index');
+        //cadastro
+        Route::get('/cadastrarRegistro', [RegistroController::class, 'cadastrarRegistro'])->name('cadastrar.registro');
+        Route::post('/cadastrarRegistro', [RegistroController::class, 'cadastrarRegistro'])->name('cadastrar.registro');
+        //atualizar
+        Route::get('/atualizarRegistro/{id}', [RegistroController::class, 'atualizarRegistro'])->name('atualizar.registro');
+        Route::put('/atualizarRegistro/{id}', [RegistroController::class, 'atualizarRegistro'])->name('atualizar.registro');
 
-    //Renovar
-    Route::put('/renovarRegistro/{id}', [RegistroController::class, 'adicionarDias'])->name('renovar.registro');
+        //Renovar
+        Route::put('/renovarRegistro/{id}', [RegistroController::class, 'adicionarDias'])->name('renovar.registro');
 
 
-    Route::delete('/delete', [RegistroController::class, 'delete'])->name('registro.delete');
+        Route::delete('/delete', [RegistroController::class, 'delete'])->name('registro.delete');
+    });
+
 });
+
