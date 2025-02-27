@@ -89,7 +89,7 @@
             $dataRegistro = \Carbon\Carbon::parse($registro->data_registro);
             $hoje = \Carbon\Carbon::now();
             $diferencaDias = $hoje->diffInDays($dataRegistro, false);
-            $corFundo = $diferencaDias >= 15 ? 'green' : ($diferencaDias > 7 ? 'yellow' : 'red');
+            $corFundo = $diferencaDias >= 15 ? 'green' : ($diferencaDias > 7 ? '#ff8b5d' : 'red');
         @endphp
 
         <div class="card" style="background-color: {{ $corFundo }}">
