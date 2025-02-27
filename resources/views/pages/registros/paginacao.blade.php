@@ -18,14 +18,23 @@
     }
 
 
-    .button-group{
+    .button-group form {
+        margin: 0;
+        /* Reset default margin */
+        padding: 0;
+        /* Reset any padding */
+        display: inline-block;
+        /* Makes form fit just around the button */
+    }
 
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-
-
-        }
+    .renovar-btn {
+        padding: 5px 10px;
+        /* Adjust if needed */
+        height: auto;
+        /* So it's the same height as other buttons */
+        line-height: 1;
+        /* Align vertically if needed */
+    }
 
 
     @media (max-width: 1200px) {
