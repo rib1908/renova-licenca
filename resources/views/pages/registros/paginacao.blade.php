@@ -60,8 +60,8 @@
             position: fixed;
             /* Stays at the bottom even when scrolling */
             bottom: 0;
-            left: 0;
-            width: 100%;
+            left: 12%;
+            width: 75%;
             /* Full width */
             padding: 10px;
             text-align: center;
@@ -98,8 +98,8 @@
             position: fixed;
             /* Stays at the bottom even when scrolling */
             bottom: 0;
-            left: 0;
-            width: 100%;
+            left: 12%;
+            width: 75%;
             /* Full width */
             padding: 10px;
             text-align: center;

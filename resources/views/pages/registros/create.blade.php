@@ -16,6 +16,25 @@
         padding-left: 400px;
         padding-top: 100px;
     }
+
+    @media (max-width: 1200px) {
+
+        .titulo {
+            margin: 0 auto;
+
+            padding-left: 200px;
+        }
+    }
+
+    @media (max-width: 900px) {
+
+
+        .titulo {
+            padding: 50px;
+
+            margin: 0 auto;
+        }
+    }
 </style>
 
 <h1 class="titulo">Cadastro Registro</h1>
