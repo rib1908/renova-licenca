@@ -27,23 +27,20 @@
     background-color: white;
 }
 
-/* Título e texto */
+/* Title */
 #titulo-card {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 8px;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: black;
+    margin-bottom: 12px;
+    color: white; /* Tomato red */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Text shadow */
 }
 
+/* Text */
 .card-text {
     font-size: 1rem;
-    text-align: center;
+    color: white;
     word-break: break-word;
-    color: black;
 }
 @media (min-width: 2300px) {
     .card-container {
@@ -120,7 +117,10 @@
             $dataRegistro = \Carbon\Carbon::parse($registro->data_registro);
             $hoje = \Carbon\Carbon::now();
             $diferencaDias = $hoje->diffInDays($dataRegistro, false);
-            $corFundo = $diferencaDias >= 15 ? '#32CD32' : ($diferencaDias > 7 ? '#FF8C00' : 'red');
+            $corFundo = $diferencaDias >= 15 ? 'background-color: #00b712;
+background: linear-gradient(229deg, rgba(1, 233, 5, 1), rgba(27, 200, 4, 1));' : ($diferencaDias > 7 ? 'background-color: #f28500;
+background-image: linear-gradient(147deg, #f28500 0%, #FFA500 74%);' : ' background-color: #e55451;
+background: linear-gradient(173deg, rgba(255, 0, 13, 1), rgba(200, 4, 4, 1));');
         @endphp
 
         <div class="card" style="background-color: {{ $corFundo }}">
