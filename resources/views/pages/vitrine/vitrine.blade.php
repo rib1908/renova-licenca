@@ -1,90 +1,112 @@
 @extends('index')
 
 <style>
-    /* Container dos cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Cada card terá pelo menos 200px, mas cresce se tiver espaço */
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Estilo do Card */
+.card {
+    width: 100%;
+    height: 250px; /* Altura fixa ou ajustável */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    overflow: hidden;
+    background-color: white;
+}
+
+/* Título e texto */
+#titulo-card {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: black;
+}
+
+.card-text {
+    font-size: 1rem;
+    text-align: center;
+    word-break: break-word;
+    color: black;
+}
+@media (min-width: 2300px) {
     .card-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        /* Seis colunas em telas grandes */
-        gap: 15px;
-        justify-content: start;
-        /* Alinha os cards à esquerda */
+        grid-template-columns: repeat(8, 1fr);
     }
-
-    /* Estilos do Card */
-    .card {
-        max-width: 350px;
-        /* Mantém o tamanho uniforme */
-        height: 250px;
-        /* Altura fixa para alinhamento */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 15px;
-        overflow: hidden;
-        /* Garante que nada saia do card */
-    }
-
-    /* Estilização do título */
     #titulo-card {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-        white-space: nowrap;
-        /* Evita que o título quebre */
-        overflow: hidden;
-        text-overflow: ellipsis;
-        /* Adiciona "..." se for muito longo */
-        width: 100%;
-        color: black
-    }
-
-    /* Estilização do texto */
+    font-size: 2.0rem;
+}
     .card-text {
-        font-size: 1rem;
-        margin-bottom: 6px;
-        word-wrap: break-word;
-        /* Quebra o texto para caber dentro do card */
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 100%;
-        white-space: nowrap;
-        color: black;
-    }
+    font-size: 1.6rem;
+}
+}
 
-
-    /* Responsividade */
-    @media (max-width: 1300px) {
-        .card-container {
-            grid-template-columns: repeat(4, 1fr);
-            /* 4 colunas em telas médias */
-        }
+/* Mais colunas em telas bem grandes */
+@media (min-width: 1920px) and (max-width: 2299px) {
+    .card-container {
+        grid-template-columns: repeat(6, 1fr);
     }
+    #titulo-card {
+    font-size: 1.8rem;
+}
+    .card-text {
+    font-size: 1.4rem;
+}
+}
 
-    /* Responsividade */
-    @media (max-width: 1200px) {
-        .card-container {
-            grid-template-columns: repeat(3, 1fr);
-            /* 4 colunas em telas médias */
-        }
+@media (min-width: 1500px) and (max-width: 1919px) {
+    .card-container {
+        grid-template-columns: repeat(6, 1fr);
     }
+}
 
-    @media (max-width: 768px) {
-        .card-container {
-            grid-template-columns: repeat(2, 1fr);
-            /* 2 colunas em telas menores */
-        }
+/* Ajuste progressivo conforme a tela diminui */
+@media (max-width: 1400px) {
+    .card-container {
+        grid-template-columns: repeat(5, 1fr);
     }
+}
 
-    @media (max-width: 480px) {
-        .card-container {
-            grid-template-columns: repeat(1, 1fr);
-            /* 1 coluna em telas muito pequenas */
-        }
+@media (max-width: 1200px) {
+    .card-container {
+        grid-template-columns: repeat(4, 1fr);
     }
+}
+
+@media (max-width: 900px) {
+    .card-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .card-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
 </style>
 
 <div class="text-bg-primary mb-5 w-100 p-5">
