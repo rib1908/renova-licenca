@@ -7,7 +7,7 @@
     }
 
     .table {
-        max-width: 1200px;
+        max-width: 2500px;
         /* Define uma largura máxima para o formulário */
         padding: 20px;
         margin-top: 20px;

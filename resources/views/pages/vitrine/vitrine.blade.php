@@ -4,7 +4,7 @@
     /* Container dos cards */
     .card-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         /* Seis colunas em telas grandes */
         gap: 15px;
         justify-content: start;
@@ -13,7 +13,7 @@
 
     /* Estilos do Card */
     .card {
-        max-width: 250px;
+        max-width: 350px;
         /* Mantém o tamanho uniforme */
         height: 250px;
         /* Altura fixa para alinhamento */
@@ -55,10 +55,19 @@
         color: black;
     }
 
+
+    /* Responsividade */
+    @media (max-width: 1300px) {
+        .card-container {
+            grid-template-columns: repeat(4, 1fr);
+            /* 4 colunas em telas médias */
+        }
+    }
+
     /* Responsividade */
     @media (max-width: 1200px) {
         .card-container {
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             /* 4 colunas em telas médias */
         }
     }
@@ -89,7 +98,7 @@
             $dataRegistro = \Carbon\Carbon::parse($registro->data_registro);
             $hoje = \Carbon\Carbon::now();
             $diferencaDias = $hoje->diffInDays($dataRegistro, false);
-            $corFundo = $diferencaDias >= 15 ? 'green' : ($diferencaDias > 7 ? '#ff8b5d' : 'red');
+            $corFundo = $diferencaDias >= 15 ? '#32CD32' : ($diferencaDias > 7 ? '#FF8C00' : 'red');
         @endphp
 
         <div class="card" style="background-color: {{ $corFundo }}">
